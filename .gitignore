@@ -9,3 +9,6 @@
 /s1.bat - Shortcut.lnk
 /sleep.cpp
 /sleep.exe
+/currentlyMemUsed.cpp
+/currentlyMemUsed.exe
+/.vscode/*
