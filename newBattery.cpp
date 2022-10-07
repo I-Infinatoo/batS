@@ -1,24 +1,6 @@
 #include <iostream>
 #include "windows.h"
 
-void stringToLPCWSTR(std::string &str, LPCWSTR &title) {
-
-	// Initializing a string object
-	// string str = "GeeksforGeeks";
-
-	// Initializing an object of wstring
-	std::wstring temp = std::wstring(str.begin(), str.end());
-
-	// Applying c_str() method on temp
-	// LPCWSTR wideString = temp.c_str();
-	title = temp.c_str();
-
-	// Print strings
-	// cout << "str is : " << str << endl;
-	// wcout << "wideString is : "
-	// 	<< wideString << endl;
-}
-
 int main() {
 
     while(1) {
@@ -49,10 +31,12 @@ int main() {
 			// if pressed OK then snooze for 5 minutes
 			// if pressed CANCEL then terminate the program
             LPCWSTR message = L"UN-PLUG THE CHARGER\n\nOK: To Snooze\nCancel: To completely ignore";
-        	LPCWSTR title;
-
+        	
+			// step 1: construct the string having integer value
 			std::string str = "Battery > " + std::to_string(maximumChargeLimit);
-			stringToLPCWSTR(str, title);
+			// step2: convert teh string into LPCWSTR type
+			std::wstring temp = std::wstring(str.begin(), str.end());
+			LPCWSTR title = temp.c_str();
 
 			// https://www.youtube.com/watch?v=C9msBx8DOVc
 			// https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-messagebox
@@ -76,10 +60,12 @@ int main() {
 
 			LPCWSTR message = L"PLUG-IN THE CHARGER\n\nOK: To Snooze\nCancel: To completely ignore";
         	// LPCWSTR title = L"Battery < 50%";
-			LPCWSTR title;
-
+			
+			// step 1: construct the string having integer value
 			std::string str = "Battery < " + std::to_string(minimumChargeLimit);
-			stringToLPCWSTR(str, title);
+			// step2: convert teh string into LPCWSTR type
+			std::wstring temp = std::wstring(str.begin(), str.end());
+			LPCWSTR title = temp.c_str();
 
 			// to convert the std::string to the LPCWSTR
 			// https://www.geeksforgeeks.org/convert-stdstring-to-lpcwstr-in-c/

@@ -12,3 +12,10 @@
 /currentlyMemUsed.cpp
 /currentlyMemUsed.exe
 /.vscode/*
+
+# remove them
+/changeValuesInFile.cpp
+/changeValuesInFile.exe
+/values.txt
+/batS.cpp
+/batS.exe
