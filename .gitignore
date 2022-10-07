@@ -14,8 +14,7 @@
 /.vscode/*
 
 # remove them
-/changeValuesInFile.cpp
-/changeValuesInFile.exe
+/changeLimit.exe
 /values.txt
 /batS.cpp
 /batS.exe
