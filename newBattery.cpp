@@ -1,7 +1,39 @@
 #include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
 #include "windows.h"
 
+#define log std::cout
+
 int main() {
+	
+	std::ifstream fileIn;
+
+    fileIn.open("./values.txt", std::ios::in);
+
+    if(!fileIn.is_open()) {
+        log << "Error while opening the file\n";
+
+		// run the script to make the file with the default value
+		system("createDefFile.bat");
+        return 0;
+    }
+
+    // reading from the file
+    std::string line;
+    std::vector<std::string> prevValues(3); // [0] : minimum     [1] : maximum
+    int i = 0;
+
+    while (fileIn) {
+        // Read a Line from File
+        getline(fileIn, prevValues[i++]);
+    }
+
+	fileIn.close();
+
+	const int minimumChargeLimit = stoi(prevValues[0]);
+	const int maximumChargeLimit = stoi(prevValues[1]);
 
     while(1) {
 		// https://learn.microsoft.com/en-us/windows/win32/api/winbase/ns-winbase-system_power_status?redirectedfrom=MSDN
@@ -20,8 +52,6 @@ int main() {
         // cout << "status.BatteryLifePercent:" << batteryPercentage << "\n";
 
         int snoozeTime = 120000; // 2min
-		const int maximumChargeLimit = 88;
-		const int minimumChargeLimit = 50;
 
         // if battery percentage is greater then 90 and charger is still pugedin
         if(batteryPercentage > maximumChargeLimit && isCharging) {
