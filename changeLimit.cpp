@@ -12,7 +12,9 @@ void printHelp() {
     std::cout << "\nchangeLimit receives two arguments as follows:\t";
     std::cout << "changeLimit <lower limit> <upperlimit>\n\n";
 
-    std::cout << "-r\tTo reset the limits to their default values\n";
+    std::cout << "\n\t( 1 < lower limit < upper limit < 99 )\n\n";
+
+    std::cout << "-r\t\tTo reset the limits to their default values\n";
     std::cout << "-h | --help\t for help\n";
 
     std::cout << "\nAfter changing the limits or resetting the values 'System Restart'";
@@ -47,12 +49,18 @@ int main (int argc, char *argv[]) {
         if(argv1 == "-r") { system("createDefFile.bat"); }
         return 0;
     }
+    
+    // input validation
+    if(argv[1] < to_string(1) && argv[2] > to_string(99) && stoi(argv[1]) > stoi(argv[2])) {
+        std::cout << "\nEnter valid limits!\nUse -h or --help for more info";
+        return 0;
+    }
 
     ifstream fileIn;
-    fileIn.open("./values.txt", ios::in);
-
+    fileIn.open("values.txt", std::ios::in);
+    
     if(!fileIn.is_open()) {
-        log << "Error while opening the file\n";
+        log << "Error while opening the file!\n";
         return 0;
     }
 
@@ -91,6 +99,8 @@ int main (int argc, char *argv[]) {
 
     std::cout << "\nUpdated Values:\nMinimum Charge Value: " << argv[1];
     std::cout << "\nMaximum Charge Value: " << argv[2] << "\n";
+
+    std::cout << "\nSystem Restart is required to experience the effect!\n";
     
     return 0;
 }

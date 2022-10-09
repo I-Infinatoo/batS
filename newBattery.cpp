@@ -10,7 +10,7 @@ int main() {
 	
 	std::ifstream fileIn;
 
-    fileIn.open("./values.txt", std::ios::in);
+    fileIn.open("values.txt", std::ios::in);
 
     if(!fileIn.is_open()) {
         log << "Error while opening the file\n";
