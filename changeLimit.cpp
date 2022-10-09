@@ -51,7 +51,7 @@ int main (int argc, char *argv[]) {
     }
     
     // input validation
-    if(argv[1] < to_string(1) && argv[2] > to_string(99) && stoi(argv[1]) > stoi(argv[2])) {
+    if(stoi(argv[1]) < 2 || stoi(argv[2]) > 98 || stoi(argv[1]) > stoi(argv[2])) {
         std::cout << "\nEnter valid limits!\nUse -h or --help for more info";
         return 0;
     }
